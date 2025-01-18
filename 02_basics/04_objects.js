@@ -45,11 +45,23 @@ const users = [
 
 // console.log(users[1].email)
 
-console.log(tinderUser)
+// console.log(tinderUser)
 
-console.log(Object.keys(tinderUser)); // to get all keys of Object and it will be returned as an Array
-console.log(Object.values(tinderUser)); // to get all values of Object and it will be returned as an Array
-console.log(Object.entries(tinderUser)); // to get all values of Object and it will be returned as an Array
+// console.log(Object.keys(tinderUser)); // to get all keys of Object and it will be returned as an Array
+// console.log(Object.values(tinderUser)); // to get all values of Object and it will be returned as an Array
+// console.log(Object.entries(tinderUser)); // to get all values of Object and it will be returned as an Array
 
-console.log(tinderUser.hasOwnProperty("isLoggedIn")); // find property of object
+// console.log(tinderUser.hasOwnProperty("isLoggedIn")); // find property of object
+
+// destructring 
+const course = {
+    coursname: "JS learn",
+    price:999,
+    courseInstructore:"SuperMan"
+}
+
+const {courseInstructore:instructor} = course // To directly get field from an Object
+
+console.log(instructor)
+
 
