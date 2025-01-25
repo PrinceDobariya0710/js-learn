@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    document.getElementById('owl').onclick = ()=>{
+        alert("Owl Clicked")
+    }
+    document.getElementById('owl').addEventListener('click',(e)=>{
+        console.log(e)
+        alert("Owl Clicked")
+    },false)
+    // type : (example:keyboard events, mouse events)
+    // timestamp : current time on click
+    // defaultPreventd : stop default behvaiour of any tag (form submit)
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctlrkey, shiftkey, keyCode
+
+    //attachEvent Earlier Time used but not now
+    // jQuery in Earlier time like .onEvent
+
+    // Event propogation
+    // 1. Event bubbling (we used most false) 2.Event Capturing
+    // owl is into images but when you click on owl owl will execute first and then images event will execute.
+    document.getElementById('images').addEventListener('click',(e)=>{
+        console.log('clicked inside the UI');
+    },false)
+    document.getElementById('owl').addEventListener('click',(e)=>{
+        console.log('clicked OWL the UI');
+        // this will only execute inside's owl event and stop the event executions for upcoming outside
+        e.stopPropagation() 
+
+    // },false)
+    // bubbling is like it will go from down small to bigger bubble (inside to outside)
+    // when last argument is false means you are using bubbling (inside out)
+    // when last argument is true means you are using capturing (outside in)
+
+    document.getElementById('google').addEventListener('click',(e)=>{
+        e.preventDefault()
+        console.log(e)
+    },false)
+
+    document.querySelector('#images').addEventListener('click',(e)=>{
+        console.log(e.target);
+        if(e.target.tagName === "IMG"){
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+            // removeIt.parentNode.removeChild(removeIt)
+        }
+        
+
+    },false)
+</script>
+</html>
